@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import Fade from "react-reveal/Fade";
+import { Zoom } from "react-reveal";
 const TopSellers = () => {
   const [sellers, setSellers] = useState([]);
 
@@ -28,30 +29,32 @@ const TopSellers = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="col-md-12">
-            <ol className="author_list">
-              {sellers.map((sell) => (
-                <li key={sell.id}>
-                  <div className="author_list_pp">
-                    <Link to={`/author/${sell.authorId}`}>
-                      <img
-                        className="lazy pp-author"
-                        src={sell.authorImage}
-                        alt=""
-                      />
-                      <i className="fa fa-check"></i>
-                    </Link>
-                  </div>
-                  <div className="author_list_info">
-                    <Link to={`/author/${sell.authorId}`}>
-                      {sell.authorName}
-                    </Link>
-                    <span>{sell.price}</span>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <Zoom>
+            <div className="col-md-12">
+              <ol className="author_list">
+                {sellers.map((sell) => (
+                  <li key={sell.id}>
+                    <div className="author_list_pp">
+                      <Link to={`/author/${sell.authorId}`}>
+                        <img
+                          className="lazy pp-author"
+                          src={sell.authorImage}
+                          alt=""
+                        />
+                        <i className="fa fa-check"></i>
+                      </Link>
+                    </div>
+                    <div className="author_list_info">
+                      <Link to={`/author/${sell.authorId}`}>
+                        {sell.authorName}
+                      </Link>
+                      <span>{sell.price}</span>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Zoom>
         </div>
       </div>
     </section>

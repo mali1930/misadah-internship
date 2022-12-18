@@ -1,5 +1,8 @@
 import React from "react";
-import Zoom from "react-reveal/Zoom";
+import Zoom from 'react-reveal/Zoom';
+
+
+
 const LandingIntro = () => {
   return (
     <section id="section-intro" className="no-top no-bottom">

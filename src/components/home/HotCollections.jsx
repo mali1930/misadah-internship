@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import Fade from "react-reveal/Fade";
 
 // Import Swiper styles
 import "swiper/css";
@@ -18,7 +20,7 @@ export default function HotCollections() {
     );
 
     setUsers(data);
-    console.log(data);
+ 
   }
   useEffect(() => {
     fetchHotCollections();
@@ -34,58 +36,60 @@ export default function HotCollections() {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            navigation={true}
-            centerInsufficientSlides
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 10,
-              },
-            }}
-            modules={[Navigation]}
-            className="mySwiper"
-          >
-            {users?.map((item) => (
-              <SwiperSlide key={item.id}>
-                <div className="w-fit max-w-md">
-                  <div className="nft_coll">
-                    <div className="nft_wrap">
-                      <Link to={`/item-details/${item.nftId}`}>
-                        <img
-                          src={item.nftImage}
-                          className="lazy img-fluid"
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                    <div className="nft_coll_pp">
-                      <Link to={`/author/${item.authorId}`}>
-                        <img
-                          className="lazy pp-coll"
-                          src={item.authorImage}
-                          alt=""
-                        />
-                      </Link>
-                      <i className="fa fa-check"></i>
-                    </div>
-                    <div className="nft_coll_info">
-                      <Link to="/explore">
-                        <h4>{item.title}</h4>
-                      </Link>
-                      <span>ERC-192</span>
+          <Fade left>
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={10}
+              navigation={true}
+              centerInsufficientSlides
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 10,
+                },
+                768: {
+                  slidesPerView: 3,
+                  spaceBetween: 10,
+                },
+              }}
+              modules={[Navigation]}
+              className="mySwiper"
+            >
+              {users?.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <div className="w-fit max-w-md">
+                    <div className="nft_coll">
+                      <div className="nft_wrap">
+                        <Link to={`/item-details/${item.nftId}`}>
+                          <img
+                            src={item.nftImage}
+                            className="lazy img-fluid"
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                      <div className="nft_coll_pp">
+                        <Link to={`/author/${item.authorId}`}>
+                          <img
+                            className="lazy pp-coll"
+                            src={item.authorImage}
+                            alt=""
+                          />
+                        </Link>
+                        <i className="fa fa-check"></i>
+                      </div>
+                      <div className="nft_coll_info">
+                        <Link to="/explore">
+                          <h4>{item.title}</h4>
+                        </Link>
+                        <span>ERC-192</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Fade>
         </div>
       </div>
     </section>

@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Fade from "react-reveal/Fade";
+
+import Skeleton from "../UI/Skeleton";
 import { Zoom } from "react-reveal";
 const TopSellers = () => {
   const [sellers, setSellers] = useState([]);
+   
 
   async function fetchSellers() {
     const { data } = await axios.get(
@@ -12,6 +14,7 @@ const TopSellers = () => {
     );
 
     setSellers(data);
+   
   }
 
   useEffect(() => {
@@ -30,9 +33,11 @@ const TopSellers = () => {
             </div>
           </div>
           <Zoom>
+           
             <div className="col-md-12">
+            
               <ol className="author_list">
-                {sellers.map((sell) => (
+                {sellers.length ? sellers.map((sell) => (
                   <li key={sell.id}>
                     <div className="author_list_pp">
                       <Link to={`/author/${sell.authorId}`}>
@@ -51,7 +56,7 @@ const TopSellers = () => {
                       <span>{sell.price}</span>
                     </div>
                   </li>
-                ))}
+                )):(<h1>Loading</h1>)}
               </ol>
             </div>
           </Zoom>

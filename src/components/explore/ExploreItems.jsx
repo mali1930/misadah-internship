@@ -14,13 +14,13 @@ const ExploreItems = () => {
     );
 
     setExplores(data);
-    console.log(data);
+  
   }
 
   useEffect(() => {
     setTimeout(() => {
       fetchExplores();
-    }, 100);
+    }, 20);
   }, []);
   const showMore = () => {
     setLoadMore((preValue) => preValue + 4);

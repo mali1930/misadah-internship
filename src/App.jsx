@@ -6,18 +6,22 @@ import ItemDetails from "./pages/ItemDetails";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import "swiper/css/bundle";
+import Skeleton from "./components/UI/Skeleton";
 function App() {
   return (
-    <Router>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/author/:id" element={<Author />} />
-        <Route path="/item-details/:id" element={<ItemDetails />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <div>
+      <Skeleton />
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/author/:id" element={<Author />} />
+          <Route path="/item-details/:id" element={<ItemDetails />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </div>
   );
 }
 

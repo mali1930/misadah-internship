@@ -75,6 +75,7 @@ const Author = () => {
                             <Skeleton width="100%" height="40px" />
                             <div style={{ opacity: "-1" }}>Followers</div>
                           </div>
+                         
                           <div className="profile_follower">
                             <Skeleton width="100%" height="40px" />
                             <div style={{ opacity: "-1" }}>Followers</div>
